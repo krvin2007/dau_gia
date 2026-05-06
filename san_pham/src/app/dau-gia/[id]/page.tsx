@@ -64,7 +64,19 @@ export default function AuctionDetailPage({ params }: { params: Promise<{ id: st
             {/* Left Column */}
             <div className={styles.leftCol}>
               <div className={styles.imageMain}>
-                {getCategoryEmoji(auction.categoryId)}
+                {auction.images && auction.images.length > 0 ? (
+                  <img 
+                    src={auction.images[0]} 
+                    alt={auction.title} 
+                    className={styles.image}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                      (e.target as HTMLImageElement).parentElement!.innerHTML = getCategoryEmoji(auction.categoryId);
+                    }}
+                  />
+                ) : (
+                  getCategoryEmoji(auction.categoryId)
+                )}
                 <div className={styles.imageBadges}>
                   {auction.hotDeal && (
                     <span className={`${styles.badge} ${styles.badgeHot}`}>🔥 HOT</span>
@@ -118,7 +130,7 @@ export default function AuctionDetailPage({ params }: { params: Promise<{ id: st
                         <div className={styles.historyBidderName}>{bid.bidder.name}</div>
                         <div className={styles.historyTime}>{formatRelativeTime(bid.timestamp)}</div>
                       </div>
-                      <div className={styles.historyAmount}>{bid.amount.toLocaleString()} SUI</div>
+                      <div className={styles.historyAmount}>{bid.amount.toLocaleString('vi-VN')} SUI</div>
                     </div>
                   )) : (
                     <p style={{ color: 'var(--text-tertiary)', textAlign: 'center', padding: '20px' }}>
@@ -144,7 +156,7 @@ export default function AuctionDetailPage({ params }: { params: Promise<{ id: st
                 <div className={styles.currentPriceWrap}>
                   <div className={styles.currentPriceLabel}>Giá hiện tại</div>
                   <div className={styles.currentPrice}>
-                    {auction.currentPrice.toLocaleString()}
+                    {auction.currentPrice.toLocaleString('vi-VN')}
                     <span className={styles.currentPriceSUI}> SUI</span>
                   </div>
                 </div>

@@ -11,13 +11,27 @@ interface CountdownTimerProps {
 
 export default function CountdownTimer({ endTime, size = 'md' }: CountdownTimerProps) {
   const [timeLeft, setTimeLeft] = useState(formatTimeLeft(endTime));
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const timer = setInterval(() => {
       setTimeLeft(formatTimeLeft(endTime));
     }, 1000);
     return () => clearInterval(timer);
   }, [endTime]);
+
+  if (!isMounted) {
+    return (
+      <div className={`${styles.countdown} ${styles[size]}`}>
+        <div className={styles.unit}><span className={styles.value}>--</span></div>
+        <span className={styles.separator}>:</span>
+        <div className={styles.unit}><span className={styles.value}>--</span></div>
+        <span className={styles.separator}>:</span>
+        <div className={styles.unit}><span className={styles.value}>--</span></div>
+      </div>
+    );
+  }
 
   if (timeLeft.total === 0) {
     return (

@@ -18,7 +18,19 @@ export default function AuctionCard({ auction }: AuctionCardProps) {
     <Link href={`/dau-gia/${auction.id}`} className={`${styles.card} ${auction.hotDeal ? styles.cardHot : ''}`}>
       <div className={styles.imageWrap}>
         <div className={styles.imagePlaceholder}>
-          {getCategoryEmoji(auction.categoryId)}
+          {auction.images && auction.images.length > 0 ? (
+            <img 
+              src={auction.images[0]} 
+              alt={auction.title} 
+              className={styles.image}
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none';
+                (e.target as HTMLImageElement).parentElement!.innerHTML = getCategoryEmoji(auction.categoryId);
+              }}
+            />
+          ) : (
+            getCategoryEmoji(auction.categoryId)
+          )}
         </div>
         <div className={styles.imageOverlay} />
         <div className={styles.badges}>

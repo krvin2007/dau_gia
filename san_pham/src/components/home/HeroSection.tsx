@@ -44,13 +44,13 @@ export default function HeroSection() {
           <div className={styles.heroStats}>
             <div className={styles.heroStat}>
               <span className={styles.heroStatValue}>
-                {platformStats.totalAuctions.toLocaleString()}
+                {platformStats.totalAuctions.toLocaleString('vi-VN')}
               </span>
               <span className={styles.heroStatLabel}>Phiên đấu giá</span>
             </div>
             <div className={styles.heroStat}>
               <span className={styles.heroStatValue}>
-                {platformStats.totalUsers.toLocaleString()}
+                {platformStats.totalUsers.toLocaleString('vi-VN')}
               </span>
               <span className={styles.heroStatLabel}>Người dùng</span>
             </div>
@@ -71,7 +71,19 @@ export default function HeroSection() {
             </div>
 
             <div className={styles.spotlightImage}>
-              🎮
+              {spotlightAuction.images && spotlightAuction.images.length > 0 ? (
+                <img 
+                  src={spotlightAuction.images[0]} 
+                  alt={spotlightAuction.title} 
+                  className={styles.image}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).style.display = 'none';
+                    (e.target as HTMLImageElement).parentElement!.innerHTML = '🎮';
+                  }}
+                />
+              ) : (
+                '🎮'
+              )}
             </div>
 
             <h2 className={styles.spotlightTitle}>{spotlightAuction.title}</h2>
@@ -79,7 +91,7 @@ export default function HeroSection() {
             <div className={styles.spotlightPrice}>
               <div>
                 <span className={styles.spotlightPriceVal}>
-                  {spotlightAuction.currentPrice.toLocaleString()}
+                  {spotlightAuction.currentPrice.toLocaleString('vi-VN')}
                 </span>
                 <span className={styles.spotlightPriceSUI}> SUI</span>
               </div>

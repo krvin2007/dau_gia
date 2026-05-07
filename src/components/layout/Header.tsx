@@ -33,7 +33,7 @@ export default function Header() {
           <Link href="/" className={styles.logo}>
             <div className={styles.logoIcon}>⚡</div>
             <div>
-              <span className={styles.logoText}>SUI Auction</span>
+              <span className={styles.logoText}>SUI Auction Marketplace</span>
               <span className={styles.logoSub}>Blockchain Marketplace</span>
             </div>
           </Link>

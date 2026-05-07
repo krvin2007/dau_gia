@@ -377,6 +377,23 @@ export const auctions: Auction[] = [
     featured: true,
     hotDeal: true,
   },
+  {
+    id: 'test-2',
+    title: 'Voucher Ưu Đãi VIP - 1 SUI',
+    description: 'Voucher đặc biệt dùng để test hệ thống với mức giá cực thấp. Chỉ dành cho mục đích thử nghiệm.',
+    images: [],
+    categoryId: 'khac',
+    currentPrice: 1,
+    startPrice: 1,
+    minBidIncrement: 0.1,
+    bidCount: 0,
+    startTime: hoursAgo(1),
+    endTime: hoursFromNow(72),
+    seller: mockUsers[4],
+    status: 'active',
+    featured: true,
+    hotDeal: true,
+  },
 ];
 
 export const mockBids: Bid[] = [

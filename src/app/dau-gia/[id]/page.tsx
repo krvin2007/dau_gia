@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { use } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Gavel, Clock, Star, Shield } from 'lucide-react';

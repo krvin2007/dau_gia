@@ -33,7 +33,10 @@ export default function Header() {
           <Link href="/" className={styles.logo}>
             <div className={styles.logoIcon}>⚡</div>
             <div>
-              <span className={styles.logoText}>SUI Auction Marketplace</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span className={styles.logoText}>SUI Auction Marketplace</span>
+                <span style={{ fontSize: '10px', background: 'var(--accent-blue)', padding: '2px 6px', borderRadius: '4px', color: 'white' }}>v1.1</span>
+              </div>
               <span className={styles.logoSub}>Blockchain Marketplace</span>
             </div>
           </Link>
